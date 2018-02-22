@@ -1,5 +1,5 @@
 {
-  "name": "Noti Web",
+  "name": "noti_web",
   "version": "0.0.1",
   "description": "Rudimentary notification system using socket.io and express",
   "dependencies": {

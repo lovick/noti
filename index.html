@@ -4,20 +4,27 @@
     <title>Noti</title>
     <link rel="stylesheet" type="text/css" href="normalize.css" />
     <link rel="stylesheet" type="text/css" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     <header>
       <h1>Noti</h1>
       <h2>A project for DES 157 by Sven Olson</h2>
-      <p>This is a tool created with <a href="https://socket.io/">Socket.io</a> and <a href="https://expressjs.com/">Express.</a></p>
+      <p>This is a tool created with <a href="https://socket.io/">Socket.io</a> and <a href="https://expressjs.com/">Express.</a> It's intended to mimic the functionality of a program called Pushbullet.</p>
     </header>
     <ul id="notiLog"></ul>
     <form id="sender">
-      <input name="title" id="title" autocomplete="off" />
-      <input name="description" id="description" autocomplete="off" />
-      <input name="color" id="color" />
-      <button>Send</button>
+      <input name="title" id="title" placeholder="Notification Title" required/>
+      <textarea name="description" id="description" placeholder="Additional Description"></textarea>
+      <select name="color" id="color">
+        <option value="default">Default</option>
+        <option value="gray">Gray</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+        <option value="red">Red</option>
+      </select>
     </form>
+    <button type="submit" form="sender" value="Submit">Send</button>
     <footer>
         <a href="https://validator.w3.org/check?uri=referer">Valid HTML 5</a>
         <a href="https://jigsaw.w3.org/css-validator/check/referer">Valid CSS</a>

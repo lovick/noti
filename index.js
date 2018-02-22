@@ -27,6 +27,7 @@ app.get('/', function(req, res){
 io.on('connection', function(socket){
   // Gets the client their ID for message display purposes.
   io.to(socket.id).emit('connect_acknowledge', socket.id);
+
   history.forEach(function(data) {
     io.to(socket.id).emit('notification', data);
   });

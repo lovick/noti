@@ -43,13 +43,25 @@ socket.on('notification', function (data) {
     var notiLog = document.getElementById('notiLog');
     var newNoti = document.createElement('li');
 
-    var notiTime = document.createTextNode(data[0]);
-    var notiTitle = document.createTextNode(data[2]);
-    var notiDesc = document.createTextNode(data[3]);
+    var d = new Date(data[0]);
+    var timeStr = d.toLocaleString();
 
-    newNoti.appendChild(notiTime);
-    newNoti.appendChild(notiTitle);
-    newNoti.appendChild(notiDesc);
+    var notiTime = document.createTextNode(timeStr);
+    var notiTimeEl = document.createElement("h3");
+
+    var notiTitle = document.createTextNode(data[2]);
+    var notiTitleEl = document.createElement("h2");
+
+    var notiDesc = document.createTextNode(data[3]);
+    var notiDescEl = document.createElement("p");
+
+    notiTimeEl.appendChild(notiTime);
+    notiTitleEl.appendChild(notiTitle);
+    notiDescEl.appendChild(notiDesc);
+
+    newNoti.appendChild(notiTimeEl);
+    newNoti.appendChild(notiTitleEl);
+    newNoti.appendChild(notiDescEl);
 
     // If notification comes from the same instances, right align it
     // otherwise, left align
@@ -80,5 +92,5 @@ function wipeNotiForm() {
     var f = document.getElementById('sender');
     f.title.value = '';
     f.description.value = '';
-    f.color.value = '';
+    f.color.value = 'default';
 }
