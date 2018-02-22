@@ -42,4 +42,8 @@ Thumbs.db
 settings.json
 env
 node_modules
-.vs
+.vs
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
