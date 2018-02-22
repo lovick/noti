@@ -24,7 +24,7 @@ form.onsubmit = function () {
     var toSend = [
         Date.now(),
         id,
-        document.getElementById('title').value, 
+        document.getElementById('title').value,
         document.getElementById('description').value,
         document.getElementById('color').value
     ];
@@ -35,7 +35,9 @@ form.onsubmit = function () {
 
 // Server returns the ID to client for differentiation between
 // the different origins of each message.
-socket.on('connect_acknowledge', function(conID) { id = conID; });
+socket.on('connect_acknowledge', function (conID) {
+    id = conID;
+});
 
 // When the socket receives a notification, this parses it
 // and displays it.

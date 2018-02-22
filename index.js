@@ -19,22 +19,22 @@ var history = [];
 app.use(express.static(__dirname + '/'));
 
 // Serve the home (and only) page of the website.
-app.get('/', function(req, res){
+app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
 // On a connection from a client
-io.on('connection', function(socket){
+io.on('connection', function (socket) {
   // Gets the client their ID for message display purposes.
   io.to(socket.id).emit('connect_acknowledge', socket.id);
 
-  history.forEach(function(data) {
+  history.forEach(function (data) {
     io.to(socket.id).emit('notification', data);
   });
 
   // When the client gives a notification,
   // send that notification to all other clients
-  socket.on('notification', function(data){
+  socket.on('notification', function (data) {
     history.push(data);
     io.emit('notification', data);
   });
@@ -42,6 +42,6 @@ io.on('connection', function(socket){
 });
 
 // Needed to allow connections to the page.
-http.listen(port, function(){
+http.listen(port, function () {
   console.log('listening on *:' + port);
 });
