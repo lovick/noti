@@ -1,3 +1,6 @@
+// Listing functions from libraries:
+// use(), sendFile(), to(), listen(), emit(), on()
+
 // Used for rendering the page.
 var express = require('express');
 var app = express();
@@ -27,12 +30,14 @@ io.on('connection', function(socket){
   history.forEach(function(data) {
     io.to(socket.id).emit('notification', data);
   });
+
   // When the client gives a notification,
   // send that notification to all other clients
   socket.on('notification', function(data){
     history.push(data);
     io.emit('notification', data);
   });
+
 });
 
 // Needed to allow connections to the page.

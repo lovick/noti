@@ -1,4 +1,7 @@
 // Please also see index.js for the server logic.
+// Also, since I see "4 functions from chosen library":
+// emit() and on() are used in this file.
+// Others from Express and Socket.io are found in index.js.
 
 'use strict';
 // why tho
@@ -37,7 +40,7 @@ socket.on('connect_acknowledge', function(conID) { id = conID; });
 // When the socket receives a notification, this parses it
 // and displays it.
 socket.on('notification', function (data) {
-    var notiLog = document.getElementById('messages');
+    var notiLog = document.getElementById('notiLog');
     var newNoti = document.createElement('li');
 
     var notiTime = document.createTextNode(data[0]);
@@ -53,7 +56,7 @@ socket.on('notification', function (data) {
     if (data[1] == id) {
         newNoti.classList.add('right');
 
-        // If notification doesn't override the color, use the default
+        // If notification doesn't override the color, use the default based on side
         if (data[4] != 'default') {
             newNoti.classList.add(data[4]);
         } else {
